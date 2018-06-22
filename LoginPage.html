@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="./bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+
+    <title>Patient Tracker App</title>
+</head>
+
+<body>
+
+    <!-- <header class="nav-color  py-5  text-xl-center  inline-block"> -->
+            <div class="container text-white py-5">
+                    <h1 class="text-center">
+                        <i class="fa fa-user-md"></i> Patient Tracker App</h1>
+                </div>
+                <!-- </header> -->
+                <br>
+                <!-- <br> -->
+                <!-- <br> -->
+                <div class="container">
+                    <div class="row  justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class=" text-white text-center">
+                                    <br>
+                                    <h1 class="text-dark appName">
+                                        <i class=" text-dark"></i> &nbsp; Patient Tracker App </h1>
+                                    <!-- <br>
+                                    <h3>
+                                        <small class="text-muted"> Sign up to see how this app can make a doctor's life easier . </small>
+                                    </h3> -->
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+            
+                                        <form method="post" id="loginForm">
+                                            
+                                            <div class="form-group">
+                                                <!-- <label for="email"></label> -->
+                                                <input type="email" name="email" placeholder="Email" class="form-control" required id="email"> &nbsp;
+                                                <small class="text-muted">example@gmail.com</small>
+                                            </div>
+            
+                                            <div class="form-group">
+                                                <!-- <label for="userPass"></label> -->
+                                                <input type="password" placeholder="Password" name="password" class="form-control" required id="password">
+                                            </div>
+            
+                                            
+            
+                                            <!-- <input type="submit" value="Submit" class="btn text-white btn-block nav-color"> -->
+                                            <button type="submit" class="btn btn-primary btn-block text-white" id="input-width">Login</button>
+                                            <br>
+                                            <!-- <p class="text-dark">Already have an account?  </p> <a href="./LoginPage.html" class="btn btn-block " >Login</a>   -->
+                                            <h5 class="mt-2 text-dark text-center" id="account">Don't have an account?
+                                                <a href="./index.html">Signup</a>
+                                            </h5>
+                                        </form>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
+                <footer class="mt-2 py-2 "></footer>
+
+                <script src="./auth/login.js"></script>
+
+</body>
+
+
+</html>
