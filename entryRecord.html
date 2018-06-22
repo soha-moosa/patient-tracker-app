@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyBUvXdnEULdtBJCRMfFM_mWOQNdDlD-g34",
+            authDomain: "patient-tracker-app-8c634.firebaseapp.com",
+            databaseURL: "https://patient-tracker-app-8c634.firebaseio.com",
+            projectId: "patient-tracker-app-8c634",
+            storageBucket: "",
+            messagingSenderId: "934358866547"
+        };
+
+        var firebase = firebase.initializeApp(config);
+
+    </script>
+
+
+    <title>Patient Tracker App</title>
+</head>
+
+<body>
+    <a id="logoutBtn" class="btn btn-primary text-white float-right logout">Logout</a>
+    <!-- <header class="nav-color  py-5  text-xl-center  inline-block"> -->
+    <div class="container text-white py-5">
+        <h1 class="text-center">
+            <i class="fa fa-user-md"></i> Patient Tracker App</h1>
+    </div>
+    <!-- </header> -->
+
+
+    <section class="my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-6 col-lg-7">
+                    <div class="card">
+                        <div class=" text-white text-center ">
+                            <br>
+                            <h1 class="text-dark appName">
+                                <i class="fa fa-pencil"></i>
+                                Enter Patient Record
+                            </h1>
+                        </div>
+                        <!-- card header-->
+
+                        <div class="card-body">
+                            <form  id="appointmentForm" > <!-- damn ghlt diya hwa hy :/ -->
+                                <div class="form-group" >
+                                    <!-- <label for="patientId">Patient ID:</label> -->
+                                    <input type="number" id="patientId" placeholder="Patient ID" name="patientID" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="patientlasttName" class="text-muted">Appointment Date:</label>
+                                    <input type="date" id="appointmentDate" placeholder="Appointment Date" name="lname" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- <label for="patientFirstName">Patient Name:</label> -->
+                                    <input type="text" id="patientName" placeholder="Patient Name" name="fname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="text" id="disease" placeholder="Disease" name="lname" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="text" id="medications" placeholder="Medications" name="lname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="number" id="weight" placeholder="Weight" name="lname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="number" id="growth" placeholder="Growth" name="lname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bloodGroup" class="text-muted">Blood Group: </label>
+                                    <select name="bloodGroup" placeholder="Blood Group" id="bloodGroup" class="form-control">
+                                        <option id="select" selected>Select</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="number" id="age" placeholder="Age" name="lname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="number" id="bloodPressure" placeholder="Blood Pressure" name="lname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="number" id="pulseRate" placeholder="Pulse rate" name="lname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="patientlasttName">:</label> -->
+                                    <input type="number" id="sugar" placeholder="Sugar" name="lname" class="form-control">
+                                </div>
+
+                                <button class="btn btn-block btn-primary text-white " type="submit">
+                                    <h5>Submit</h5>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="mt-4 py-4 "></footer>
+
+    <script>
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            firebase.auth().signOut()
+                .then(function () {
+                    console.log("Logged out!");
+                }).catch(function (error) {
+                    console.log("Error: ", error);
+                })
+        });
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                window.location.href = "./LoginPage.html";
+            }
+        });
+
+        
+        let user = localStorage.getItem("user");
+
+        user = JSON.parse(user);
+
+// Writing in database
+
+        document.getElementById("appointmentForm").addEventListener("submit", (event)  => {
+            event.preventDefault();
+
+            let patientId = document.getElementById("patientId").value;
+            let appointmentDate = document.getElementById("appointmentDate").value;
+            let patientName = document.getElementById("patientName").value;
+            let disease = document.getElementById("disease").value;
+            let medications = document.getElementById("medications").value;
+            let weight = document.getElementById("weight").value;
+            let growth = document.getElementById("growth").value;
+            let bloodGroup = document.getElementById("bloodGroup").value;
+            if (bloodGroup === "Select") {
+                alert("Choose your blood group!");
+            }
+            else {
+                var selectedItem = bloodGroup;
+            }
+
+            let age = document.getElementById("age").value;
+            let bloodPressure = document.getElementById("bloodPressure").value;
+            let pulseRate = document.getElementById("pulseRate").value;
+            let sugar = document.getElementById("sugar").value;
+
+            let patientObj = {
+                patientId,
+                appointmentDate,
+                patientName,
+                disease,
+                medications,
+                weight,
+                growth,
+                bloodGroup,
+                age,
+                bloodPressure,
+                pulseRate,
+                sugar
+            };
+            console.log(patientObj);
+            console.log(user.uid);
+            console.log(patientObj.patientName);
+            console.log(user.uid);
+            let database = firebase.database().ref(user.uid).child(patientObj.patientName).child("Appointments").push(patientObj)
+                .then(()=> {
+                        document.getElementById("patientId").value = '' ;
+                        document.getElementById("appointmentDate").value = '';
+                        document.getElementById("patientName").value = '';
+                        document.getElementById("disease").value = '';
+                        document.getElementById("medications").value = '';
+                        document.getElementById("weight").value = '';
+                        document.getElementById("growth").value = '';
+                        document.getElementById("bloodGroup").value = document.getElementById("select").value;
+                        document.getElementById("age").value = '';
+                        document.getElementById("bloodPressure").value = '';
+                        document.getElementById("pulseRate").value = '';
+                        document.getElementById("sugar").value = ''
+
+                }).catch((error)=> {
+                    console.log(error.message); 
+                })
+
+        });
+
+// Reading from DB;
+    // firebase.database().ref(user.uid).child("Patients").on("value" , (snapshot)=>{
+    //     let data = snapshot.val();
+    //     console.log(data);
+
+    //     let patientArray = [];
+    //     for(let key in data) {
+    //          patientArray.push(data[key]);
+    //     }
+    //     console.log(patientArray);
+
+    //     patientArray.map( (item, index) => {
+    //         console.log(item);
+    //         let history = 
+    //         `<tr>
+    //             <th>Patient ID</th>
+    //             <td>${item.patientId}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Appointment Date</th>
+    //             <td>${item.appointmentDate}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Patient Name</th>
+    //             <td>${item.patientName}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Disease</th>
+    //             <td>${item.disease}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Medications</th>
+    //             <td>${item.medications}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Weight</th>
+    //             <td>${item.weight}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Growth</th>
+    //             <td>${item.growth}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Blood Group</th>
+    //             <td>${item.bloodGroup}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Age</th>
+    //             <td>${item.age}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Blood Pressure</th>
+    //             <td>${item.bloodPressure}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Pulse Rate</th>
+    //             <td>${item.pulseRate}</td>
+    //         </tr>
+    //         <tr>
+    //             <th>Sugar</th>
+    //             <td>${item.sugar}</td>
+    //         </tr> `
+    //         document.getElementById("historyTable").innerHTML += history;
+    //     });
+
+
+
+
+    // });
+
+
+
+    </script>
+
+</body>
+
+
+</html>
