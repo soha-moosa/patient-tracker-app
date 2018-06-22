@@ -1,0 +1,98 @@
+.div{
+    height: 10px;
+    width: 1263px;
+}
+.div-border{
+    border: black solid 1px;
+    
+}
+.header-card{
+    background-color: blueviolet !important;
+}
+.nav-color{
+    /* background-color:  blueviolet; */
+    /* background: #DA4453;  fallback for old browsers */
+/* background: -webkit-linear-gradient(to right, #89216B, #DA4453);  Chrome 10-25, Safari 5.1-6 */
+/* background: linear-gradient(to right, #89216B, #DA4453); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+/* background: #9CECFB;  fallback for old browsers */
+/* background: -webkit-linear-gradient(to left, #0052D4, #65C7F7, #9CECFB);  Chrome 10-25, Safari 5.1-6 */
+/* background: linear-gradient(to left, #0052D4, #65C7F7, #9CECFB); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+background: #5f2c82;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+#account{
+    font-size: 15px !important;
+    /* background-color: white; */
+    /* color: blueviolet !important */
+}
+.box-width{
+    width: 950px;
+    margin: 5px;
+}
+.appName{
+    /* font-family: 'Lobster', cursive; */
+    font-family: 'Dancing Script', cursive;
+    
+
+}
+
+
+
+.input-width{
+    width: 300px;
+}
+header > div > span > h2 {
+    display: inline;
+}
+
+
+.card-width {
+    width: 500px;
+}
+#card-div-width{
+    width: 1000px;
+    margin-left: 80px;
+    
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #5f2c82;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.font{
+    font-family: 'Nunito', sans-serif !important;
+}
+
+.logout{
+    margin: 4%;
+}
+
+
+.add-button{
+    width: 100px !important;
+}
+.input{
+    width: 400px !important;
+}
+
+
+.img-width{
+    width: 110px;
+}
+.getStarted{
+    width: 150px;
+    margin: 4%;
+}
+
+.homeHeading {
+    font-size: 100px;
+    font-family: 'Dancing Script', cursive;
+    
+}
