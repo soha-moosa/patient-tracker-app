@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyBUvXdnEULdtBJCRMfFM_mWOQNdDlD-g34",
+            authDomain: "patient-tracker-app-8c634.firebaseapp.com",
+            databaseURL: "https://patient-tracker-app-8c634.firebaseio.com",
+            projectId: "patient-tracker-app-8c634",
+            storageBucket: "",
+            messagingSenderId: "934358866547"
+        };
+
+        var firebase = firebase.initializeApp(config);
+
+    </script>
+
+
+    <title>Patient Tracker App</title>
+</head>
+
+<body>
+        <a id="logoutBtn" class="btn btn-primary text-white float-right logout">Logout</a>
+        <div class="container text-white py-5">
+        <h1 class="text-center">
+            <i class="fa fa-user-md"></i> Patient Tracker App</h1>
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+
+                <form id="patientIdForm" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 text-center input " type="number" placeholder="Search by patient id" aria-label="Search"
+                        id="patientIdHistory">
+                    <button class="btn btn-block btn-outline-light ml-2 add-button" type="submit">Search</button>
+                    <br>
+                    <br>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+
+                <form id="patientNameForm" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 text-center input " type="text" placeholder="Search by patient name" aria-label="Search"
+                        id="patientNameHistory">
+                    <button class="btn btn-block btn-outline-light ml-2 add-button" type="submit">Search</button>
+                    <br>
+                    <br>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+
+                <form id="appointmentDateForm" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 text-center input " type="date" placeholder="Search by appointment date" aria-label="Search"
+                        id="patientAppointmentHistory">
+                    <button class="btn btn-block btn-outline-light ml-2 add-button" type="submit">Search</button>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="text-center">
+                <br> <br>
+            <h1 id="heading" class="text-white appName">
+            </h1>
+        </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-12 col-lg-7">
+                    <div id="historyTable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <small class="text-light">e.g: Patient ID, Patient Name or Appointment Date</small> chota kyn arha hai ? pta nh :p -->
+
+
+    <footer class="mt-4 py-4 "></footer>
+
+
+    <script>
+
+        let user = localStorage.getItem("user");
+        user = JSON.parse(user);
+
+
+        const ref = firebase.database().ref(user.uid);
+
+        const formOfName = document.getElementById('patientNameForm');
+        const formOfDate = document.getElementById("appointmentDateForm");
+        const formOfId = document.getElementById("patientIdForm");
+
+        const searchByName = (event) => {
+            event.preventDefault();
+            let name = document.getElementById('patientNameHistory').value;
+            ref.child(name).child("Appointments").on('value', (snapshot) => {
+                let convertedArray = convertThisIntoArray(snapshot.val());
+                printTable(convertedArray); // samjhi ab? nh xd aby xD smjh gai lets test :P mjhe maza nahi arha xD 
+            })
+        };
+
+
+        const searchByDate = (event) => {
+            event.preventDefault();
+            let date = document.getElementById('patientAppointmentHistory').value;
+            console.log(date);
+            firebase.database().ref(user.uid).on('value', function (snapshot) {
+                var data = snapshot.val();
+                console.log(data);
+                let arrayForDate = [];
+                for (let key in data) { 
+                    for (let key2 in data[key]) { 
+                        for (let key3 in data[key][key2]) { 
+                            arrayForDate.push(data[key][key2][key3]);
+                        }
+                    }
+                }
+                console.log(arrayForDate);
+                let finalResult = arrayForDate.filter((record, index) => date === record.appointmentDate)
+                printTable(finalResult);
+                console.log(finalResult);
+            });
+
+
+
+
+        };
+        const searchById = (event) => {
+            event.preventDefault();
+        let id = document.getElementById("patientIdHistory").value;
+        console.log(id);
+        firebase.database().ref(user.uid).on("value", (snapshot)=> {
+            var data = snapshot.val();
+            console.log(data);
+            let arrayForId = [];
+            for(let key in data) {
+                for(let key2 in data[key]){
+                    for(let key3 in data[key][key2]){
+                        arrayForId.push(data[key][key2][key3]);
+                    }
+                }
+            }
+            console.log(arrayForId);
+            let finalIdResult = arrayForId.filter((record, index)=> id === record.patientId)
+            printTable(finalIdResult);
+            console.log(finalIdResult);
+        });
+        };
+
+
+        formOfName.addEventListener('submit', searchByName);
+        formOfDate.addEventListener('submit', searchByDate);
+        formOfId.addEventListener('submit', searchById);
+
+        const convertThisIntoArray = (object) => {
+            let patientArray = [];
+            for (let key in object) {
+                patientArray.push(object[key]);
+            }
+            return patientArray;
+        };
+        let cardContnt = ``;
+
+        let table = document.getElementById("historyTable");
+        const printTable = (array) => {
+            table.innerHTML = '';
+
+            array.map((item, index) => {
+                console.log(item);
+
+                document.getElementById('heading').innerHTML = `<i class="fa fa-history"></i> Patient history ` 
+                let history = `
+                    <div class="card w-100 mt-3"> 
+                    <div class="card-header text-center bg-dark text-white">
+                        <div class="card-title">
+                                <h3> Appointment # : ${index + 1} </h3>
+                        </div>
+                     </div>
+                        <div class="card-body">
+                               
+                            <table class="table text-center"><tr>
+                                <th>Patient ID</th>
+                                <td>${item.patientId}</td>
+                            </tr>
+                            <tr>
+                                <th>Appointment Date</th>
+                                <td>${item.appointmentDate}</td>
+                            </tr>
+                            <tr>
+                                <th>Patient Name</th>
+                                <td>${item.patientName}</td> 
+                            </tr>
+                            <tr>
+                                <th>Disease</th>
+                                <td>${item.disease}</td>
+                            </tr>
+                            <tr>
+                                <th>Medications</th>
+                                <td>${item.medications}</td>
+                            </tr>
+                            <tr>
+                                <th>Weight</th>
+                                <td>${item.weight}</td>
+                            </tr>
+                            <tr>
+                                <th>Growth</th>
+                                <td>${item.growth}</td>
+                            </tr>
+                            <tr>
+                                <th>Blood Group</th>
+                                <td>${item.bloodGroup}</td>
+                            </tr>
+                            <tr>
+                                <th>Age</th>
+                                <td>${item.age}</td>
+                            </tr>
+                            <tr>
+                                <th>Blood Pressure</th>
+                                <td>${item.bloodPressure}</td>
+                            </tr>
+                            <tr>
+                                <th>Pulse Rate</th>
+                                <td>${item.pulseRate}</td>
+                            </tr>
+                            <tr>
+                                <th>Sugar</th>
+                                <td>${item.sugar}</td>
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+               
+`
+
+
+
+                table.innerHTML += history;
+                document.getElementById("patientIdHistory").value = '';
+                document.getElementById("patientNameHistory").value = '';
+                document.getElementById("patientAppointmentHistory").value = '';
+
+            });
+
+        }
+        document.getElementById("logoutBtn").addEventListener("click",()=>{
+            firebase.auth().signOut()
+                .then(()=>{
+                    console.log("logged out!");
+                    localStorage.removeItem("user");
+                }).catch((error)=>{
+                    console.log("Error: " , error);
+                })
+        });
+
+        firebase.auth().onAuthStateChanged((user)=> {
+            if(!user){
+                window.location.href = "./LoginPage.html";
+            }
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
