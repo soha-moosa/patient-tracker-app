@@ -24,23 +24,6 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
     auth.signInWithEmailAndPassword(email,password)
         .then(function(data){
-//             console.log("Response", data); 
-//         // window.location.href = "../dashboard.html";
-
-//         // local storage
-
-//         localStorage.setItem("user", JSON.stringify(data.user));
-
-//         // get data
-
-//         let user = localStorage.getItem("user");
-//         user = JSON.parse(user);
-//         console.log("User Object Data: " , user);
-
-// //        remove data
-//         setTimeout(  ()=>{
-//             localStorage.removeItem("user");
-//         }, 4000); 
 
          localStorage.setItem("user", JSON.stringify(data.user));
             
