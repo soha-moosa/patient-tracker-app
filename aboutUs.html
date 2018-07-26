@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="./bootstrap.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
+
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyBUvXdnEULdtBJCRMfFM_mWOQNdDlD-g34",
+            authDomain: "patient-tracker-app-8c634.firebaseapp.com",
+            databaseURL: "https://patient-tracker-app-8c634.firebaseio.com",
+            projectId: "patient-tracker-app-8c634",
+            storageBucket: "",
+            messagingSenderId: "934358866547"
+        };
+
+        var firebase = firebase.initializeApp(config);
+
+    </script>
+    <title>Patient Tracker App</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <h4 class="text-center text-white">
+                <i class="fa fa-user-md"></i> Patient Tracker App</h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="bg-faded navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link text-white " href="./dashboard.html">
+                        <i class="fa fa-address-card"></i> &nbsp;Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a id="logoutBtn" class="nav-link text-white logout">
+                        <i class="fa fa-sign-out"> </i> &nbsp;Logout</a>
+                </li>
+
+        </div>
+    </nav>
+
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-sm-6 col-md-8 col-lg-12">
+                <h4 class="lead text-justify">Our Web Application propose is to develop dispensary patient data management and viewing. The system is aimed
+                    to help doctors to enter as well as view patient history as well as other patient details. The system
+                    can be accessed on web to be used for furthe login. The application allows a doctor to open application
+                    and enter the details of any patient that used his service. The application allows doctor to insert various
+                    data fields regarding a patient including patient name, disease,medication provided, date of arrival
+                    etc. The system saves this patient related data in the realtime DB. The doctor may now view this data
+                    as and when needed. The doctor may check the details whenever needed. The application allows doctor to
+                    search patients by name, id as well as appointment date. </h4>
+
+                <br>
+
+                <h5 class="ml-3">
+                    <i class="fa fa-angle-right"></i> &nbsp;Doctor may enter details of any patient with related data. </h5>
+                <h5 class="ml-3">
+                    <i class="fa fa-angle-right"></i> &nbsp;The system saves this entry for later viewing.</h5>
+                <h5 class="ml-3">
+                    <i class="fa fa-angle-right"></i> &nbsp;The system allows doctor to view patient history as and when needed. </h5>
+                <h5 class="ml-3">
+                    <i class="fa fa-angle-right"></i> &nbsp;The application allows doctor to search any patient by name. </h5>
+                <h5 class="ml-3">
+                    <i class="fa fa-angle-right"></i> &nbsp; The application allows doctor to search patients by appointment date </h5>
+                <h5 class="ml-3">
+                    <i class="fa fa-angle-right"></i> &nbsp; The application allows doctor to search patients by patient id </h5>
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-2 py-2 "></footer>
+
+
+</body>
+
+<script>
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+        firebase.auth().signOut()
+            .then(function () {
+                console.log("Logged out!");
+                localStorage.removeItem('user');
+            }).catch(function (error) {
+                console.log("Error: ", error);
+            })
+    });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+            window.location.href = "./LoginPage.html";
+        }
+    });
+
+</script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+ "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+ crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+ crossorigin="anonymous"></script>
+
+</html>
