@@ -5,28 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./bootstrap.css">
+    <!-- <link rel="stylesheet" href="./bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
 
 
     <title>Patient Tracker App</title>
 </head>
 
 <body>
-    <!-- <header class="nav-color  py-5  text-xl-center  inline-block"> -->
-    <div class="container text-white py-5">
-        <h1 class="text-center">
-            <i class="fa fa-user-md"></i> Patient Tracker App</h1>
-    </div>
-    <!-- </header> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+        <a class="navbar-brand" href="#">
+            <h4 class="text-center text-white">
+                <i class="fa fa-user-md"></i> Patient Tracker App</h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="bg-faded navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link text-white " href="./index.html"><i class="fa fa-info-circle"></i> &nbsp; About us
+                    </a>
+                </li>
+                
+                <li class="nav-item active">
+                    <a class="nav-link text-white " href="./LoginPage.html"><i class="fa fa-users"></i>&nbsp; Login
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+
     <br>
-    <!-- <br> -->
-    <!-- <br> -->
+    <br>
+    <br>
     <div class="container">
         <div class="row  justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -44,57 +69,57 @@
                         <div class="card-body">
 
                             <form method="post" id="signupForm">
-                                    <div class="form-group">
-                                            <!-- <label for="patientFirstName">First Name:</label> -->
-                                            <input type="text" id="firstName" placeholder="First Name"name="fname" required class="form-control">
-                                        </div>
-        
-                                        <div class="form-group">
-                                            <!-- <label for="patientlasttName">Last Name:</label> -->
-                                            <input type="text" id="lastName" placeholder="Last Name" name="lname" required class="form-control">
-                                        </div>
-        
                                 <div class="form-group">
-                                    <!-- <label for="userName"></label> -->
+
+                                    <input type="text" id="firstName" placeholder="First Name" name="fname" required class="form-control">
+                                </div>
+
+                                <div class="form-group">
+
+                                    <input type="text" id="lastName" placeholder="Last Name" name="lname" required class="form-control">
+                                </div>
+
+                                <div class="form-group">
+
                                     <input type="text" name="userName" placeholder="User Name" class="form-control" required id="username">
                                 </div>
 
                                 <div class="form-group">
-                                    <!-- <label for="email"></label> -->
+
                                     <input type="email" name="email" placeholder="Email" class="form-control" required id="email"> &nbsp;
                                     <small class="text-muted">example@gmail.com</small>
                                 </div>
                                 <div class="form-group">
-                                        <!-- <label for="age">Age:</label> -->
-                                        <input type="number" min="0" placeholder="Age" name="ageOfPatient" id="age" required class="form-control">
-                                    </div>
-    
-                                    <label for="gender" id="gender" class="text-muted"> Gender: </label> &nbsp;
-                                    <input type="radio" id="male" name="gender" checked value="Male"> Male
-                                    <input type="radio" id="female" name="gender" value="Female"> Female
-                                    <br>
-                                    <br>
-    
-                                    <div class="form-group">
-                                        <label for="dateOfBirth" class="text-muted">Date Of Birth: </label>
-                                        <input type="date" name="dateOfBirth" placeholder="Date of Birth" required id="dateOfBirth" class="form-control">
-                                    </div>
-    
+
+                                    <input type="number" min="0" placeholder="Age" name="ageOfPatient" id="age" required class="form-control">
+                                </div>
+
+                                <label for="gender" id="gender" class="text-muted"> Gender: </label> &nbsp;
+                                <input type="radio" id="male" name="gender" checked value="Male"> Male
+                                <input type="radio" id="female" name="gender" value="Female"> Female
+                                <br>
+                                <br>
 
                                 <div class="form-group">
-                                    <!-- <label for="userPass"></label> -->
+                                    <label for="dateOfBirth" class="text-muted">Date Of Birth: </label>
+                                    <input type="date" name="dateOfBirth" placeholder="Date of Birth" required id="dateOfBirth" class="form-control">
+                                </div>
+
+
+                                <div class="form-group">
+
                                     <input type="password" placeholder="Password" name="password" class="form-control" required id="password">
                                 </div>
 
                                 <div class="form-group">
-                                    <!-- <label for="confrmPass"></label> -->
+
                                     <input type="password" name="confrmPass" placeholder="Confirm Password" class="form-control" required id="confirmPassword">
                                 </div>
 
-                                <!-- <input type="submit" value="Submit" class="btn text-white btn-block nav-color"> -->
+
                                 <button type="submit" class="btn btn-primary btn-block text-white input-width" id="signupBtn">Signup</button>
                                 <br>
-                                <!-- <p class="text-dark">Already have an account?  </p> <a href="./LoginPage.html" class="btn btn-block " >Login</a>   -->
+
                                 <h5 class="mt-2 text-dark text-center" id="account">Already have an account?
                                     <a href="./LoginPage.html">Login</a>
                                 </h5>
@@ -108,11 +133,17 @@
     </div>
     </div>
 
-    <footer class="mt-4 py-4 "></footer>
+    <footer class="mt-4 py-4 footer-length"></footer>
 
-<script src="./auth/signin.js"></script>
+    <script src="./auth/signin.js"></script>
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+    
 </body>
 
 
