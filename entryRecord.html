@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./bootstrap.css">
+    <!-- <link rel="stylesheet" href="./bootstrap.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <!-- footer -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> -->
 
     <script>
         var config = {
@@ -32,15 +36,41 @@
 </head>
 
 <body>
-    <a id="logoutBtn" class="btn btn-primary text-white float-right logout">Logout</a>
-    <!-- <header class="nav-color  py-5  text-xl-center  inline-block"> -->
-    <div class="container text-white py-5">
-        <h1 class="text-center">
-            <i class="fa fa-user-md"></i> Patient Tracker App</h1>
-    </div>
-    <!-- </header> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <h4 class="text-center text-white">
+                <i class="fa fa-user-md"></i> Patient Tracker App</h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="bg-faded navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white " href="./aboutUs.html">
+                        <i class="fa fa-info-circle"></i> &nbsp;About us
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white " href="./dashboard.html">
+                        <i class="fa fa-address-card"></i> &nbsp;Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a id="logoutBtn" class="nav-link text-white logout">
+                        <i class="fa fa-sign-out"> </i> &nbsp;Logout</a>
+                </li>
+
+        </div>
+    </nav>
 
 
+    <br>
+    <br>
+    <br>
     <section class="my-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -56,9 +86,8 @@
                         <!-- card header-->
 
                         <div class="card-body">
-                            <form  id="appointmentForm" > <!-- damn ghlt diya hwa hy :/ -->
-                                <div class="form-group" >
-                                    <!-- <label for="patientId">Patient ID:</label> -->
+                            <form id="appointmentForm">
+                                <div class="form-group">
                                     <input type="number" id="patientId" placeholder="Patient ID" name="patientID" class="form-control">
                                 </div>
                                 <div class="form-group">
@@ -67,24 +96,19 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <!-- <label for="patientFirstName">Patient Name:</label> -->
                                     <input type="text" id="patientName" placeholder="Patient Name" name="fname" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="text" id="disease" placeholder="Disease" name="lname" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="text" id="medications" placeholder="Medications" name="lname" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="number" id="weight" placeholder="Weight" name="lname" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="number" id="growth" placeholder="Growth" name="lname" class="form-control">
                                 </div>
                                 <div class="form-group">
@@ -103,19 +127,15 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="number" id="age" placeholder="Age" name="lname" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="number" id="bloodPressure" placeholder="Blood Pressure" name="lname" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="number" id="pulseRate" placeholder="Pulse rate" name="lname" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="patientlasttName">:</label> -->
                                     <input type="number" id="sugar" placeholder="Sugar" name="lname" class="form-control">
                                 </div>
 
@@ -130,7 +150,7 @@
             </div>
         </div>
     </section>
-    <footer class="mt-4 py-4 "></footer>
+    <footer class="mt-4 py-4 footer-length"></footer>
 
     <script>
         document.getElementById("logoutBtn").addEventListener("click", function () {
@@ -148,14 +168,14 @@
             }
         });
 
-        
+
         let user = localStorage.getItem("user");
 
         user = JSON.parse(user);
 
-// Writing in database
+        // Writing in database
 
-        document.getElementById("appointmentForm").addEventListener("submit", (event)  => {
+        document.getElementById("appointmentForm").addEventListener("submit", (event) => {
             event.preventDefault();
 
             let patientId = document.getElementById("patientId").value;
@@ -197,22 +217,22 @@
             console.log(patientObj.patientName);
             console.log(user.uid);
             let database = firebase.database().ref(user.uid).child(patientObj.patientName).child("Appointments").push(patientObj)
-                .then(()=> {
-                        document.getElementById("patientId").value = '' ;
-                        document.getElementById("appointmentDate").value = '';
-                        document.getElementById("patientName").value = '';
-                        document.getElementById("disease").value = '';
-                        document.getElementById("medications").value = '';
-                        document.getElementById("weight").value = '';
-                        document.getElementById("growth").value = '';
-                        document.getElementById("bloodGroup").value = document.getElementById("select").value;
-                        document.getElementById("age").value = '';
-                        document.getElementById("bloodPressure").value = '';
-                        document.getElementById("pulseRate").value = '';
-                        document.getElementById("sugar").value = ''
+                .then(() => {
+                    document.getElementById("patientId").value = '';
+                    document.getElementById("appointmentDate").value = '';
+                    document.getElementById("patientName").value = '';
+                    document.getElementById("disease").value = '';
+                    document.getElementById("medications").value = '';
+                    document.getElementById("weight").value = '';
+                    document.getElementById("growth").value = '';
+                    document.getElementById("bloodGroup").value = document.getElementById("select").value;
+                    document.getElementById("age").value = '';
+                    document.getElementById("bloodPressure").value = '';
+                    document.getElementById("pulseRate").value = '';
+                    document.getElementById("sugar").value = ''
 
-                }).catch((error)=> {
-                    console.log(error.message); 
+                }).catch((error) => {
+                    console.log(error.message);
                 })
 
         });
@@ -290,6 +310,13 @@
 
 
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
 
 </body>
 
