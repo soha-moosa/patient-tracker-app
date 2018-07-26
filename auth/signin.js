@@ -41,15 +41,19 @@ document.getElementById("signupForm").addEventListener("submit", function (event
     let auth =    firebase.auth();
 
     auth.createUserWithEmailAndPassword(email,password)
-        .then( function(){
-            console.log("Account Created!");
-            window.location.href = "../dashboard.html"
-        }).catch(function(error){
-            console.log("Error: ", error);
-        })
-    
+    .then(function(data){
 
-});
+        localStorage.setItem("user", JSON.stringify(data.user));
+           
+       })
+       
+       .catch(function(error){
+           console.log(error.message);
+       })
+
+   
+       });
+
 
 firebase.auth().onAuthStateChanged( function(user){
     if(user){
