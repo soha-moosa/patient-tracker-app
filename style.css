@@ -6,6 +6,9 @@
     border: black solid 1px;
     
 }
+.logout{
+    cursor: pointer;
+}
 .header-card{
     background-color: blueviolet !important;
 }
@@ -69,10 +72,10 @@ body {
 .font{
     font-family: 'Nunito', sans-serif !important;
 }
-
+/* 
 .logout{
     margin: 4%;
-}
+} */
 
 
 .add-button{
@@ -85,14 +88,68 @@ body {
 
 .img-width{
     width: 110px;
+    /* margin-left: 5%;
+    margin-top: 20%; */
 }
 .getStarted{
     width: 150px;
-    margin: 4%;
+    margin: 7%;
+    margin-right: 5%;
 }
 
 .homeHeading {
-    font-size: 100px;
+    /* font-size: 100%; */
     font-family: 'Dancing Script', cursive;
     
 }
+.footer-length{
+    margin-bottom: 100px;
+}
+
+
+
+
+
+
+
+ /* Small devices (landscape phones) */
+ @media (min-width: 576px) {
+    /* body{
+      background: red;
+    } */
+  }
+
+  /* Medium devices (tablets) */
+  @media (min-width:768px) {
+    /* body{
+      background: blue;
+    } */
+  }
+
+  /* Large devices (desktops) */
+  @media (min-width:992px) {
+    /* body{
+      background: green;
+    } */
+  }
+
+  /* Extra large devices (large desktops) */
+  @media (min-width:1200px) {
+    /* body{
+      background: yellow;
+    } */
+  }
+
+  /* The given screen size or smaller */
+
+  /* Extra small devices (portrait phones)*/
+  @media (max-width:575px) {}
+
+  /* Small devices (landscape phones)*/
+  @media (max-width:767px) {}
+
+  /* Medium devices (tablets)*/
+  @media (max-width:991px) {}
+
+  /* Large devices (desktops)*/
+  @media (max-width:1199) {}
